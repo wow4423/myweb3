@@ -1,3 +1,67 @@
-h1 {
-    background-color: lightgreen;
+@font-face {
+    font-family: 'PyeongchangPeace';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+body {
+  font-family: 'PyeongchangPeace', sans-serif;
+  font-weight: 1000;
+}
+
+.card-area {
+    width: 85%;
+    height: 100px;
+    border:  3px solid rgb(72, 72, 72);
+    border-radius: 15px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    /* 부모를 못찾게 되니까 relative 준다 (이거 잘 설명좀 지피티야) */
+    position:relative;
+    backface-visibility: hidden;
+    transition: 0.2s;
+    border-radius: 15px;
+}
+
+/* 겹치게 해주기 */
+/* 앞면, 뒷면 모두 백페이스를 안보이게*/
+.card > div {
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    border-radius: 15px;
+}
+
+.card-front {
+    background-color: lightseagreen;
+}
+
+.card-back {
+    background-color: lightcoral;
+    transform: rotateY(180deg);
+}
+
+.flip > .card {
+    transform: rotateY(180deg);
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.237);
+    width : 90vw;
+    margin : 0 auto;
+    display : grid;
+    grid-template-columns: repeat(10, 100px);
+    /* 만약에 또 늘어나면 알아서 맞춰주는게 auto */
+    grid-auto-rows : 120px;
+    place-items :  center center;
+    place-content :  center center;
 }
